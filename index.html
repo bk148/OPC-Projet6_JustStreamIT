@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustStreamIT</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="nav">
+            <div class="nav_gauche">
+                <img class="nav_logo" src="img/logo7.png" alt="">
+              </div>
+              <div class="nav_droite">
+                  <nav>
+                      <ul>
+                          <li>Accueil</li>
+                          <li>Catégories</li>
+                      </ul>
+                  </nav>
+              </div>
+        </div>
+    </header>
+
+  <!-- Video la mieux notée-->
+        <div id="banner_image">
+            <div id="banner_contents"> 
+                <h1 id="banner_title">Titre de la Video</h1>
+                <div id="banner_buttons">
+                    <button class="banner_button-trigger">Play</button>
+                    <button class="banner_button-trigger">More information</button>
+                </div>
+                <p id="banner_description"></p>
+            </div>
+        </div>
+        <div id="banner_fadeBottom"></div>
+    <!-- row -->
+    <div id="headrow">
+        <div class="row">
+          <h2 class="row__title">_</h2>
+          <div class="row__posters"></div>
+        </div>
+      </div>
+
+    <div class="main_modal">
+        <!-- The Modal -->
+        <div id="film-modal" class="modal">
+            <!-- Modal content -->
+            <div class="modal__content">
+                <span class="modal__close-trigger">&times;</span>
+                <div class="modal__data"></div>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener("scroll",function(){
+              var nav = document.querySelector(".nav");
+              nav.classList.toggle("active", window.scrollY > 0);
+            }) 
+          </script>
+</body>
+</html>
