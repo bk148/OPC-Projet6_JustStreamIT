@@ -1,16 +1,16 @@
 
 // base url du site
 const base_url = "http://localhost:8000/api/v1/titles/" 
-const base_url_banner = "http://localhost:8000/api/v1/titles/?&page_size=200"
-const page_size = "&page_size=22"
+const base_url_banner = "http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score&"
+const page_size = "&page_size=17"
 
 
 // requests for movies data
 const requests = {
   fetchBestmovies: base_url + "?sort_by=-imdb_score" + page_size,
-  fetchHorreur_Byvotes: base_url + "?genre=horror&sort_by=-votes" + page_size,
-  fetchAction_Byvotes: base_url + "?genre=action&sort_by=-votes"+ page_size,
-  fetchAdventure_Byvotes: base_url + "?genre=adventure&sort_by=-votes" + page_size,
+  fetchHorreur_Byvotes: base_url + "?genre=horror&?sort_by=-imdb_score" + page_size,
+  fetchAction_Byvotes: base_url + "?genre=action&?sort_by=-imdb_score"+ page_size,
+  fetchAdventure_Byvotes: base_url + "?genre=romance&?sort_by=-imdb_score" + page_size,
 };
 
 function Modal(){
@@ -66,7 +66,7 @@ function Modal(){
 }
 
 //banner_image_movies
-const api_data = fetch(base_url);
+const api_data = fetch(base_url_banner);
 api_data.then((Response) => {
   const dataRequest = Response.json();
   dataRequest.then((reponseApi) => {
@@ -113,7 +113,7 @@ fetchCategory(requests.fetchBestmovies, 'Films les mieux notés')
   fetchCategory(requests.fetchHorreur_Byvotes, 'Horreur')
   .then(function(){
     Modal();
-  }).then(fetchCategory(requests.fetchAdventure_Byvotes, 'Adventure')
+  }).then(fetchCategory(requests.fetchAdventure_Byvotes, 'Romance')
   ).then(async function(){
     fetchCategory(requests.fetchAction_Byvotes, 'Action')
     .then(function(){
