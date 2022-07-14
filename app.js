@@ -1,7 +1,7 @@
 
 // base url du site
 const base_url = "http://localhost:8000/api/v1/titles/" 
-const base_url_banner = "http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score&"
+const base_url_banner = "http://localhost:8000/api/v1/titles/?sort_by=-votes%2C-imdb_score"
 const page_size = "&page_size=17"
 
 
