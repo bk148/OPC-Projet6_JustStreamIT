@@ -1,7 +1,7 @@
 
 // base url du site
 const base_url = "http://localhost:8000/api/v1/titles/" 
-const base_url_banner = "http://localhost:8000/api/v1/titles/?sort_by=-votes%2C-imdb_score"
+const base_url_banner = "http://127.0.0.1:8000/api/v1/titles/?sort_by=-imdb_score&"
 const page_size = "&page_size=17"
 
 
@@ -93,8 +93,43 @@ function fetchCategory(categoryUrl, categoryTitle) {
         title.innerText = categoryTitle;
         row.appendChild(title);
         const row_posters = document.createElement("div");
+        row_posters.id = 'rp' + categoryTitle;
         row_posters.className = "row__posters";
         row.appendChild(row_posters);
+
+
+          let buttonLeftCategory = document.createElement('button');
+          buttonLeftCategory.id = 'slide_left_' + categoryTitle;
+          buttonLeftCategory.className = 'row__posterLarge';
+          buttonLeftCategory.type = 'button';
+          buttonLeftCategory.innerText = '<';
+          buttonLeftCategory.style.background = 'green';
+          buttonLeftCategory.style.width = '10%';
+
+
+          let buttonRightCategory = document.createElement('button');
+          buttonRightCategory.id = 'slide_tight_' + categoryTitle;
+          buttonRightCategory.className = 'row__posterLarge';
+          buttonRightCategory.type = 'button';
+          buttonRightCategory.innerText = '>';
+          buttonRightCategory.style.background = 'red';
+          buttonRightCategory.style.width = '10%';
+
+          buttonRightCategory.onclick = function () {
+              console.log('row_posters.scrollLeft');
+              console.log(row_posters.scrollLeft);
+              row_posters.scrollLeft += 20;
+          };
+
+          buttonLeftCategory.onclick = function () {
+              console.log('row_posters.scrollLeft');
+              console.log(row_posters.scrollLeft);
+              row_posters.scrollLeft -= 20;
+          };
+
+          row.appendChild(buttonLeftCategory);
+          row.appendChild(buttonRightCategory);
+
         data.results.forEach(movie => {
           const poster = document.createElement("img");
           poster.className = "info row__posterLarge";
@@ -103,6 +138,8 @@ function fetchCategory(categoryUrl, categoryTitle) {
           poster.src = movie.image_url
           row_posters.appendChild(poster);
         });
+      }).then((res) => {
+
       });
 }
 
